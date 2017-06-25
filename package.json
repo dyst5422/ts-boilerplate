@@ -1,0 +1,73 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.1",
+  "description": "TypeScript Boilerplate",
+  "main": "index.js",
+  "repository": "https://github.com/dyst5422/ts-boilerplate.git",
+  "author": "Joseph Dylan Stewart",
+  "license": "MIT",
+  "scripts": {
+    "build": "node_modules/.bin/tsc",
+    "pretest": "npm run build",
+    "test": "node_modules/.bin/jest",
+    "lint": "node_modules/.bin/tslint --type-check -c tslint.json -p tsconfig.json src/**",
+    "commitmsg": "node_modules/.bin/validate-commit-msg",
+    "commit": "node_modules/.bin/git-cz",
+    "release": "node_modules/.bin/standard-version",
+    "precommit": "npm run lint",
+    "doc": "node_modules/.bin/typedoc --mode file --tsconfig tsconfig.json --exclude **/*.test.tsx? --out docs"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "scope": {
+        "required": true,
+        "allowed": "*",
+        "validate": false,
+        "multiple": true
+      },
+      "warnOnFail": false,
+      "maxSubjectLength": 70,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "Commit message must have a subject",
+      "helpMessage": "",
+      "autoFix": false
+    }
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "node_modules/ts-jest/preprocessor.js"
+    },
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "coveragePathIgnorePatters": [
+      ".*.d.(ts|tsx)$",
+      "index.ts"
+    ],
+    "mapCoverage": true,
+    "testRegex": "./__tests__/.*\\.(test|spec)\\.(ts|tsx|js|jsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "husky": "^0.14.1",
+    "jest": "^20.0.4",
+    "standard-version": "^4.2.0",
+    "ts-jest": "^20.0.6",
+    "ts-node": "^3.1.0",
+    "tslint": "^5.4.3",
+    "typedoc": "^0.7.1",
+    "typescript": "^2.3.4",
+    "validate-commit-msg": "^2.12.2"
+  },
+  "dependencies": {}
+}
